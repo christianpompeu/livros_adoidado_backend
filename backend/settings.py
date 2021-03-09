@@ -21,6 +21,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or env('DJANGO_SECRET_KEY')
 DEBUG = os.environ.get('DJANGO_DEBUG') or env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
     'livrosadoidado-production.herokuapp.com',
     ]
 
@@ -66,12 +68,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('POSTGRES_DATABASE_NAME') or env('POSTGRES_DATABASE_NAME'),
         'USER': os.environ.get('POSTGRES_DATABASE_USER') or env('POSTGRES_DATABASE_USER'),
         'PASSWORD': os.environ.get('POSTGRES_DATABASE_PASSWORD') or env('POSTGRES_DATABASE_PASSWORD') ,
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'HOST': os.environ.get('POSTGRES_DATABASE_HOST') or env('POSTGRES_DATABASE_HOST') ,
+        'PORT': os.environ.get('POSTGRES_DATABASE_PORT') or env('POSTGRES_DATABASE_POR') ,
     }
 }
 
